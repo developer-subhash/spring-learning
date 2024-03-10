@@ -14,4 +14,7 @@
 - and for authorization, we create bean SecurityFilterChain where we apply filter for different roles for different methods, class or url level security
 - watch - https://youtu.be/R76S0tfv36w
 - once we create userDetailsService bean with any user and password, now we can't use credential from properties file
-- 
+- reference - https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/index.html
+- security-context-holder holds security-context object
+- security-context object stores authentication object which store credentials for authenticated user otherwise credentials for unauthenticated user provided via form login
+- for details - follow above official link

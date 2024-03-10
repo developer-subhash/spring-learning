@@ -15,6 +15,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class securityConfig {
 
+    // reference - https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/index.html
+
     // used to add user for authentication
     @Bean
     UserDetailsService userDetailsService(PasswordEncoder passwordEncoder){
@@ -38,8 +40,8 @@ public class securityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults());
+                .httpBasic(Customizer.withDefaults()) // will allow to pass credential in header i.e. postman
+                .formLogin(Customizer.withDefaults()); // will send login page for credential
 
         return http.build();
     }
