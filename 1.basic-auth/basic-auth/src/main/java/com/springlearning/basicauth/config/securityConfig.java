@@ -2,8 +2,12 @@ package com.springlearning.basicauth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,6 +33,17 @@ public class securityConfig {
                 .password("sam")
                 .roles("USER")
                 .build();
+
+        // not working
+//        // The simplest way to indicate a user is authenticated is to set the SecurityContextHolder directly:
+//        SecurityContext context = SecurityContextHolder.createEmptyContext();
+//        // Spring Security does not care what type of Authentication implementation is set on the SecurityContext.
+//        // Here, we use TestingAuthenticationToken, because it is very simple.
+//        Authentication authentication =
+//                new TestingAuthenticationToken("subham", "subh", "ROLE_USER");
+//        context.setAuthentication(authentication);
+//
+//        SecurityContextHolder.setContext(context);
 
         return new InMemoryUserDetailsManager(admin, user);
     }
